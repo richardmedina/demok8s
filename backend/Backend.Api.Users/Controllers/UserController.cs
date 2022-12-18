@@ -14,6 +14,7 @@ namespace Backend.Api.Users.Controllers
             users = Enumerable.Range(1, 50).Select(value => new UserModel
             {
                 Id = value,
+                GotchiUrl = $"https://source.unsplash.com/random/200x200?sig={value}",
                 FirstName = $"FirstName {value}",
                 LastName = "CustomLastName",
                 DateOfBirth = new DateOnly(1950 + value, 01, 01),
