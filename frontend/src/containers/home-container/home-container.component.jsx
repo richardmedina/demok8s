@@ -14,7 +14,7 @@ const HomeContainer = () => {
     // const json = await response.json();
     try {
       const response = await Api.user.get();
-      setUsers(response);
+      setUsers(response.data);
     } catch(error) {
       alert('Error calling api');
       setUsers([]);
