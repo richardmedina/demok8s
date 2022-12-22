@@ -11,16 +11,16 @@ namespace Backend.Api.Users.Controllers
 
         public UserController()
         {
-            users = Enumerable.Range(1, 50).Select(value => new UserModel
-            {
-                Id = value,
-                GotchiUrl = $"https://source.unsplash.com/random/200x200?sig={value}",
-                FirstName = $"FirstName {value}",
-                LastName = "CustomLastName",
-                DateOfBirth = new DateOnly(1950 + value, 01, 01),
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now
-            });
+            users = Enumerable.Range(1, 50).Select(id => new UserModel
+            (
+                id,
+                $"https://source.unsplash.com/random/200x200?sig={id}",
+                $"FirstName {id}",
+                "CustomLastName",
+                new DateOnly(1950 + id, 01, 01),
+                DateTime.Now,
+                DateTime.Now
+            ));
         }
 
         [HttpGet]
@@ -47,14 +47,15 @@ namespace Backend.Api.Users.Controllers
             var newId = rand.Next(51, 1000);
 
             var newUser = new UserModel
-            {
-                Id = newId,
-                FirstName = $"FirstName {newId}",
-                LastName = "CustomLastName",
-                DateOfBirth = new DateOnly(1950 + newId, 01, 01),
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now
-            };
+            (
+                newId,
+                $"https://source.unsplash.com/random/200x200?sig={newId}",
+                $"FirstName {newId}",
+                "CustomLastName",
+                new DateOnly(1950 + newId, 01, 01),
+                DateTime.Now,
+                DateTime.Now
+            );
 
 
             return Created($"api/user/{newId}", newUser);
