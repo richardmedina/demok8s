@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import UserCard from '../../components/user-card/user-card.component';
 
-import Api from '../../Api';
+import Api from '../../services/Api';
 
 const HomeContainer = () => {
   const [users, setUsers] = useState([]);

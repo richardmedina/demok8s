@@ -3,6 +3,8 @@
 
 import Layout from './layout/layout.component';
 
+console.log("process.env: ", process.env);
+
 function App() {
   return (
     <Layout />

@@ -8,21 +8,21 @@ import { Link } from 'react-router-dom';
 const Header = () =>
   <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">Demo Fontend</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about">About</Nav.Link>
-            <NavDropdown title="Actions" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Option1</NavDropdown.Item>
+            <Nav.Link as={Link} to="/home">Home</Nav.Link>
+            
+            <NavDropdown title="Help" id="collasible-nav-dropdown">
+              <NavDropdown.Item as={Link} to="/server">Server Info</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-                Option2
+                Option
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Option3</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Option 2</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Options
+              <NavDropdown.Item as={Link} to="/about">
+                About
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
