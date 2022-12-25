@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 
@@ -6,16 +7,18 @@ import Api from '../../services/Api';
 
 const ServerContainer = () => {
   const [addresses, setAddresses] = useState([]);
-  useEffect(() => {
-    const apiCall = async () => {
-      try {
-        const { data } = await Api.server.getInfo();
-        setAddresses(data.serverAddress)
-      } catch(error) {
-        console.log('Error calling api: ', error);
-        setAddresses([]);
-      }
+  const apiCall = async () => {
+    try {
+      setAddresses([]);
+      const { data } = await Api.server.getInfo();
+      setAddresses(data.serverAddress)
+    } catch(error) {
+      console.log('Error calling api: ', error);
+      setAddresses([]);
     }
+  }
+
+  useEffect(() => {
     apiCall();
   }, []);
 
@@ -23,10 +26,19 @@ const ServerContainer = () => {
     <Container>
       <h2>Server</h2>
       <p>Server information</p>
+      
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th colSpan="2">Server addresses</th>
+            <th colSpan="2">
+              Server addresses &nbsp;
+              <Button
+                variant="success"
+                onClick={apiCall}
+              >
+                Refresh
+              </Button>
+            </th>
           </tr>
           <tr>
             <th>#</th>
