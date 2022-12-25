@@ -16,9 +16,13 @@ namespace Backend.Api.Users.Controllers
             IPHostEntry ipHostInfo = Dns.GetHostEntry(Dns.GetHostName()); // `Dns.Resolve()` method is deprecated.
             IPAddress ipAddress = ipHostInfo.AddressList[0];
 
-            var strAddresses = ipHostInfo.AddressList.Select(addr => addr.ToString());
+            var addresses = ipHostInfo.AddressList.Select(addr => addr.ToString());
+            var hostname = Dns.GetHostName();
 
-            ServerInfo info = new(strAddresses);
+            var list = new List<string>(addresses);
+            list.Add(hostname);
+
+            ServerInfo info = new(list);
 
             return StatusCode(StatusCodes.Status200OK, info);
         }
