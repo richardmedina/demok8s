@@ -48,7 +48,7 @@ const ServerContainer = () => {
         <tbody>
           {
             addresses.map((addr, id) => 
-              <tr key="addr">
+              <tr key={addr}>
                 <td>{id + 1}</td>
                 <td>{addr}</td>
               </tr>
